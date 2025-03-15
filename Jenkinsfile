@@ -1,7 +1,7 @@
 pipeline {
     agent any
-    
-    
+    stages {
+        
         stage('Install depdencies') {
             steps {
                 sh 'npm install'
@@ -15,18 +15,14 @@ pipeline {
         //sonar-scanner command expect sonar-project.properties should be available
         stage('Sonar Scan') {
             steps {
-                echo "Sonar scan done"
+                sh 'ls -ltr'
+                sh 'sonar-scanner'
             }
         }
+       
         
-        stage('SAST') {
-            steps {
-                echo "SAST Done"
-                echo "package version: $packageVersion"
-            }
-        }
         //install pipeline utility steps plugin, if not installed
-        
+
 
         //here I need to configure downstram job. I have to pass package version for deployment
         // This job will wait until downstrem job is over
