@@ -21,6 +21,11 @@ pipeline {
         }
        
         
+        stage('deploy') {
+            steps {
+                echo "deploying the code"
+            }
+        }
         //install pipeline utility steps plugin, if not installed
 
 
