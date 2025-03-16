@@ -31,9 +31,9 @@ pipeline {
         stage('Publish Artifact') {
             steps {
                 nexusArtifactUploader(
-                    nexusVersion: 'nexus3',
+                    nexusVersion: '1.0.0',
                     protocol: 'http',
-                    nexusUrl: '44.198.170.67/:8081/',
+                    nexusUrl: '44.198.170.67:8081/',
                     groupId: 'com.roboshop',
                     version: "$packageVersion",
                     repository: 'catalogue',
@@ -66,7 +66,7 @@ pipeline {
     post{
         always{
             echo 'cleaning up workspace'
-            // deleteDir()
+            deleteDir()
         }
     }
 }
